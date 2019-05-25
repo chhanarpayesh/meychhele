@@ -1,0 +1,147 @@
+{%extends "base.html"%}
+{% block title %} {{object}} || {{block.super}}{% endblock %}
+
+{%block content%}
+
+<h1>{{object}}</h1>
+{% include 'snippets/svg_line.html'%}
+<br>
+{% if object.verify %}
+	<p class='text-success'><span class="glyphicon glyphicon-ok"></span> Details Confirmed</p>
+{% else %}
+	<p class='text-warning'><span class="glyphicon glyphicon-warning-sign"></span> Data Anomaly</p>
+{% endif %}
+<br> &nbsp;
+{% include 'snippets/share.html'%}
+<p><span class="glyphicon glyphicon-hourglass"></span> {{object.timestamp}} <i>(updated {{object.updated|timesince}} ago)</i> by {{ object.owner }}<h3><a class="editlink" href='{% url "cinema:edit" object.id %}'><span class="glyphicon glyphicon-pencil" style="top:5px;"></span></a></h3></p>
+<br><br>
+<div class="col-sm-6">
+	<div class="cinecomp">
+		<h3>Cinema Details</h3>
+		YEAR: <p>{{object.year}}</p>
+		LANGUAGE: <p>{{object.language}}</p>
+		METACRITC SCORE: <p class="text-info">{{object.metascore}}</p>
+		ROTTENTOMATO SCORE: <p class="text-info">{{object.meter}}</p>
+		DIRECTOR: <p>{{object.director}}</p>
+		CAST: <p>{{object.cast}}</p>
+	</div>
+
+	<div class="cinecomp">
+		<h3>Synopsis</h3><p>{{object.synopsis}}</p>
+		<big>※</big>
+	</div>
+
+	<div class="cinecomp">
+		<h3>Beginning Scene(s)</h3>
+		{% for i in object.beginnings_set.all %}
+			<p class="screenplay">{{i.scenes}}</p>
+			⌇ ⌇ ⌇<br><br>
+			<big>&#8220;</big>
+			<p class="dialogs">{{i.lines}}</p>
+			<big>&#8221;</big><br>
+			<a class="addlink" href='{% url "cinema:beginnings" i.id %}'><span class="glyphicon glyphicon-pencil"></span></a>
+		{% endfor %}
+		{% if not object.beginnings_set.all %}
+			{% if object.verify %}
+				<a class="addlink" href='{% url "cinema:createbeginning"%}'><span class="glyphicon glyphicon-plus"></span></a>
+			{%else%}
+				<p class="text-warning"><span class="glyphicon glyphicon-ban-circle"></span> Can't add</p>
+			{%endif%}
+		{%endif%}
+	</div>
+
+	<div class="cinecomp">
+		<h3>Ending Scene(s)</h3>
+		{% for i in object.endings_set.all %}
+			<p class="screenplay">{{i.scenes}}</p>
+			⌇ ⌇ ⌇<br><br>
+			<big>&#8220;</big>
+			<p class="dialogs">{{i.lines}}</p>
+			<big>&#8221;</big><br>
+			<a class="addlink" href='{% url "cinema:endings" i.id %}'><span class="glyphicon glyphicon-pencil"></span></a>
+		{% endfor %}<br>
+		{% if not object.endings_set.all %}
+			{% if object.verify %}
+				<a class="addlink" href='{% url "cinema:createending"%}'><span class="glyphicon glyphicon-plus"></span></a>
+			{%else%}
+				<p class="text-warning"><span class="glyphicon glyphicon-ban-circle"></span> Can't add</p>
+			{%endif%}
+		{%endif%}
+	</div>
+
+	<div class="cinecomp">
+		<h3>Cinematography Shot(s)</h3>
+		<p>{{object.cinto}}</p>
+	</div>
+
+	<div class="cinecomp">
+		<h3>More Notable Dialog(s)</h3>
+		<big>&#8220;</big>
+		<p>{{object.dialogs}}</p>
+		<big>&#8221;</big>
+	</div>
+
+	<div class="cinecomp">
+		<h3>Pop Culture Reference(s)</h3>
+		<p>{{object.popref}}</p>
+	</div>
+</div>
+
+<div class="col-sm-6">
+	<div class="cinecomp">
+		<h3>&#9961; Design Shot(s)</h3>
+		{% for i in object.designshot_set.all %}
+			{% if i.dimage %}
+				<img width='482px' src="{{ i.dimage.url }}">
+				<a class="addlink" href='{% url "cinema:designshots" i.id %}'><span class="glyphicon glyphicon-pencil"></span></a>
+			{% endif %}
+		{% endfor %}<br>
+		{% if object.verify %}
+			<a class="addlink" href='{% url "cinema:createdesignshot"%}' onclick='return !window.open(this.href, "Add Design", "width=500, height=500, left=654, top=100, scrollbars=no, resizable=0")' target='_blank'><span class="glyphicon glyphicon-plus"></span></a>
+		{%else%}
+				<p class="text-warning"><span class="glyphicon glyphicon-ban-circle"></span> Can't add</p>
+		{%endif%}
+	</div>
+
+	<div class="cinecomp">
+		<h3>&#9749; Food & Eating Shot(s)</h3>
+		{% for i in object.foodshot_set.all %}
+			{% if i.fimage %}
+				<img width='482px' src="{{ i.fimage.url }}">
+				<a class="addlink" href='{% url "cinema:foodshots" i.id %}'><span class="glyphicon glyphicon-pencil"></span></a>
+			{% endif %}
+		{% endfor %}<br>
+		{% if object.verify %}
+			<a class="addlink" href='{% url "cinema:createfoodshot"%}'><span class="glyphicon glyphicon-plus"></span></a>
+		{%else%}
+				<p class="text-warning"><span class="glyphicon glyphicon-ban-circle"></span> Can't add</p>
+		{%endif%}
+	</div>
+
+	<div class="cinecomp">
+		<h3>&#9968; Scenery Shot(s)</h3>
+		{% for i in object.locationshot_set.all %}
+			{% if i.limage %}
+				<img width='482px' src="{{ i.limage.url }}">
+				<a class="addlink" href='{% url "cinema:locationshots" i.id %}'><span class="glyphicon glyphicon-pencil"></span></a>
+			{% endif %}
+		{% endfor %}<br>
+		{% if object.verify %}
+			<a class="addlink" href='{% url "cinema:createlocationshot"%}'><span class="glyphicon glyphicon-plus"></span></a>
+		{%else%}
+				<p class="text-warning"><span class="glyphicon glyphicon-ban-circle"></span> Can't add</p>
+		{%endif%}
+	</div>
+
+	<div class="cinecomp">
+		<h3><a href="{{ object.wpurl }}" target="_blank">Related Wikipedia Article</a></h3>
+		<button onclick="window.parent.frames[1].history.back()"><span class="glyphicon glyphicon-arrow-left"></span></button>
+		<button onclick="window.parent.frames[1].history.forward()"><span class="glyphicon glyphicon-arrow-right"></span></button>
+		<br>
+		<iframe width='400px' height='300px' src="{{ object.wpurl }}">
+		<p>WIKIPEDIA</p>
+		</iframe>
+	</div>
+</div>
+<h1>∙ ∙ ∙</h1>
+{%endblock content%}

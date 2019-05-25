@@ -1,0 +1,27 @@
+{%extends "base.html"%}
+{% block title %} Rank || {{block.super}}{% endblock %}
+
+{%block content%}
+<h2>Jungfraurank</h2>
+  {% for obj in object_list %}
+    <div class="rankcard col-sm-6 col-xs-12">
+      <h3 style="display: inline-block;">
+         <span class="rank"><small>#</small><strong>{{obj.rank}}</strong></span>
+         <span class="glyphicon glyphicon-arrow-right"></span>
+         <a href='{{ obj.athena.get_absolute_url}}'>{{obj.athena}}</a>
+       </h3>
+      <a href='{% url "athena:updaterank" obj.slug %}'><span class="glyphicon glyphicon-pencil"></span></a>
+      <div class="rating" style="display: inline-block;">
+        {{obj.athena.get_face_display}}{{obj.athena.get_body_display}}{%if obj.athena.bazooka == True%}b{%endif%}{%if obj.athena.tushy == True%}A{%endif%}
+      </div>
+      <div class="col-xs-12">
+        <img src="{{obj.athena.mugshot.url}}" style="width: 100%; height: 400px; object-fit: cover; object-position: 10px -60px">
+      </div>
+      <br>
+      <div class="col-xs-12"><small class="dob">{{obj.athena.dob}}</small></div>
+      &nbsp;
+      <hr>
+    </div>
+  {%endfor%}
+
+{%endblock content%}

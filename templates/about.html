@@ -1,0 +1,110 @@
+{%extends "base.html"%}
+  {% block title %} ABOUT || {% endblock %}
+  {%block content%}
+    <h2>Who are we?</h2>
+    <h3>We <i>love</i> poetry</h3>
+    <div class="bizcard">
+    	<img src='/media/user_check.png'>
+    	<p>
+    		আবার আসিব ফিরে ধানসিঁড়িটির তীরে - এই বাংলায় <br>
+			হয়তো মানুষ নয় - হয়তো বা শঙখচিল শালিকের বেশে, <br>
+			হয়তো ভোরের কাক হয়ে এই কার্তিঁকের নবান্নের দেশে <br>
+			কুয়াশার বুকে ভেসে একদিন আসিব কাঁঠাল ছায়ায়। <br>
+    	</p>
+    	<p>- জীবনানন্দ দাশ ("আবার আসিব ফিরে")</p>
+	</div>
+    {% include 'snippets/svg_line.html'%}<br>
+	<div class="bizcard">
+        <img src='/media/user_river.jpg'>
+        <p>
+            <i>Wer immer strebend sich bemüht, <br>
+            Den können wir erlösen. </i><br>
+            (Who strives always to the utmost, <br>
+            For him there is salvation.) <br>
+        </p>
+        <p>- Johann Wolfgang von Goethe ("Faust")</p>
+    </div>
+    {% include 'snippets/svg_line.html'%}<br>
+    <div class="bizcard">
+        <img src='/media/user_check.png'>
+        <p style="font-family: 'Kosugi Maru', sans-serif;">
+            古人の跡を求めず、 <br>
+            古人の求めたるの所を求めよ。 <br>
+            <i>kojin no ato wo motomezu, <br>
+            kojin no motometaru no tokoro wo motome yo </i><br>
+            (Seek not the paths of the ancients; <br>
+            Seek that which the ancients sought.)<br>
+        </p>
+        <p>- 松尾芭蕉 「柴門の辞」 / Matsuo Bashō ("Words by a Brushwood Gate")</p>
+    </div>
+    {% include 'snippets/svg_line.html'%}<br>
+    <div class="bizcard">
+    	<img src='/media/user_river.jpg'>
+            <p style="font-family: 'Markazi Text', serif; direction: rtl; display:block; margin-top: -40px;font-size: 24px; line-height: 28px;"><i>
+            <br> امشب ز غمت میان خون خواهم خفت 
+            <br> وز بستر عافیت برون خواهم خفت 
+            <br>باور نکنی خیال خود را بفرسـت 
+            <br>تا در نگرد که بی‌تو چون خواهم خفت
+            </i></p>
+            <p>
+            (My broken heart’s sorrows are deep. <br>
+            Painful, disturbed, broken my sleep. <br>
+            If you don’t believe, send me your thoughts <br>
+            And you will see how in sleep I weep.) <br>
+        </p>
+    	<p> - حافظ  / Hafiz  ("Rubaiyat 1-10")</p>
+	</div>
+    {% include 'snippets/svg_line.html'%}<br>
+    <div class="bizcard">
+        <img src='/media/user_check.png'>
+        <p>
+            <i>Nostra sine auxilio fugiunt bona; carpite florem,<br>
+            Qui, nisi carptus erit, turpiter ipse cadet.</i><br>
+            (Our charms depart all on their own, so pluck the bloom.<br>
+            For if you don't, it meets a wasted doom.)<br>
+        </p>
+        <p>- Ovid ("Ars Amatoria")</p>
+    </div>
+    {% include 'snippets/svg_line.html'%}<br>
+    <div class="bizcard">
+        <img src='/media/user_river.jpg'>
+        <p>
+            ‘ঘুম হতে আজ জেগেই দেখি শিশির-ঝরা ঘাসে, <br>
+            সারা রাতের স্বপন আমার মিঠেল রোদে হাসে। <br>
+            আমার সাথে করতে খেলা প্রভাত হাওয়া ভাই, <br>
+            সরষে ফুলের পাঁপড়ি নাড়ি ডাকছে মোরে তাই। <br>
+        </p>
+        <p>- 'পল্লীকবি' জসীমউদ্দীন ("রাখাল ছেলে")</p>
+    </div>
+    {% include 'snippets/svg_line.html'%}<br>
+    <br>&nbsp;<br>&nbsp;
+
+
+    <h3>Images, Typefaces and Colors used in this website</h3>
+    <div class="site_list">
+    	<div class="infobox" style="background-image: linear-gradient(to top, #f43b47 0%, #453a94 100%);font-family:monospace;color: #fff;">Loadingscreen<br>background-image:linear-gradient(
+    	to top, #f43b47 0%, #453a94 100%);</div>    
+
+    	<div class="infobox" style="background-image: url(/media/bg.jpg);background-size: cover;font-family: 'Roboto';"><p>Body Background</p></div>
+
+    	<div class="infobox" style="background: -webkit-gradient(radial, 142 23, 0, 142 23, 300, from(rgb(197, 45, 73)), to(rgb(225, 144, 81)));font-family: 'Raleway';color: #fff;">Nav<br>
+    	background: -webkit-gradient(radial, 142 23, 0, 142 23, 300, from(rgb(197, 45, 73)), to(rgb(225, 144, 81)));</div>
+    	
+    	<div class="infobox" style="background-image: linear-gradient(135deg, rgba(253, 252, 251, 0.5) 0%, rgba(226, 209, 195, 0.5) 100%);font-family: 'Abril Fatface';">Container<br>
+    	background-image: linear-gradient(135deg, rgba(253, 252, 251, 0.5) 0%, rgba(226, 209, 195, 0.5) 100%);</div>
+    	
+    	<div class="infobox" style="background: -webkit-linear-gradient(45deg, #efba1b 15% , #850d89 50%, #207262 75%);color: #fff;">
+    		H1<br>
+    	background-image: linear-gradient(to top, #f43b47 0%, #453a94 100%); -webkit-text-fill-color: rgba(0,0,0,0); -webkit-background-clip: text;</div>
+    	
+    	<div class="infobox" style="background-image:linear-gradient(to top, #a8edea 0%, #fed6e3 100%);font-family: 'playfair Display';">Cinecard<br>background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);</div>
+
+    	<div class="infobox" style="background-image: url(/media/cardhead.jpg);font-family: 'Roboto';transform: rotatez(-45deg);"><p>Cine Component</p></div>
+
+    	<div class="infobox" style="background-image: linear-gradient(-60deg, #16a085 0%, #f4d03f 100%);color: #fff;">
+    		Addlink<br>background-image: linear-gradient(-60deg, #16a085 0%, #f4d03f 100%);</div>
+
+    	<div class="infobox" style="background-image: linear-gradient(to top, #5f72bd 0%, #9b23ea 100%);color: #fff;">
+    		Addlink hover<br>background-image: linear-gradient(to top, #5f72bd 0%, #9b23ea 100%);</div>
+    </div>
+  {%endblock content%}

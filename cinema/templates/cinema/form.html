@@ -1,0 +1,27 @@
+{%extends "base.html"%}
+{% block title %} U/A || {{block.super}}{% endblock %}
+{%block content%}
+<br>&nbsp;<br>&nbsp;
+{% if formtitle %}
+<h3>{{ formtitle | safe }}</h3>
+{%else%}
+<h3>What did you watch today?</h3>
+{% include 'snippets/svg_line.html'%}
+{% endif%}
+{%if forms.errors%}
+  {{ forms.errors }}
+{%endif%}
+
+<form method="post" enctype="multipart/form-data"> {% csrf_token %}
+  <div class="form1 col-md-6 col-xs-12">
+	  	{{ form.as_p }}
+  	</div>
+  <div class="col-md-12 col-xs-12" style="margin-top: 20px;">
+	    <button class="btn btn-success savebutt" type="Submit">
+	    	<span class="glyphicon glyphicon-ok"></span> Lets Submit
+		</button>
+	</div>
+</form>
+
+<br>&nbsp;<br>&nbsp;
+{%endblock content%}

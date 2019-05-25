@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}Athena</title>
+    {% include 'snippets/css.html'%}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  {% load static %}
+  <body>
+    <div id="hideAll">
+      <button id="hidebutt" onclick="(function() {
+        var load = document.getElementById('hideAll');
+        load.style.display = 'none';return false;
+        })();return false;"
+        style="background:#0000;color:#111;font-size:64px;padding:10px;margin:20px;float: right;border:none;cursor:pointer;">&times;</button>
+      <div class="loader"></div></div>
+    
+    <div class="pre-container">
+      {%block precontent%} {%endblock precontent%}
+    </div>
+
+    {% include 'snippets/nav.html'%}
+
+    <div class="container" style="padding: 0;margin: 0;width: 100%!important;">
+      {%block content%} {%endblock content%}
+    </div>
+
+  {% include 'snippets/js.html'%}
+  </body>
+</html>

@@ -1,0 +1,19 @@
+{%extends "base.html"%}
+{% block title %} Endings from Movies || {{block.super}}{% endblock %}
+
+{%block content%}
+<h2>Shesh</h2>
+
+{%  for obj in object_list %}
+	<!-- TODO LAZY LOAD -->
+	<div class="cinecomp">
+		<h3>{{ obj.cinema }} </h3>
+		<br>
+		<h4 class="dialogs">{{ obj.lines }} </h4>
+		<h5 class="screenplay">{{ obj.scenes }} </h5>
+		<a class="addlink" href='{% url "cinema:endings" obj.id %}'><span class="glyphicon glyphicon-pencil"></span></a>
+	</div>
+{%endfor%}
+
+{%endblock content%}
+<br><hr><br>

@@ -1,0 +1,120 @@
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	$("#hideAll").delay(1000).hide(0); // animation before page loads
+
+	// collapsing the navigation bar upon click on the page
+	$(document).click(function (event) {
+        var clickover = $(event.target);
+        var _opened = $(".navbar-collapse").hasClass("collapse in");
+        if (_opened === true && !clickover.hasClass("navbar-toggle")) {
+            $("button.navbar-toggle").click();
+        }
+    });
+
+	if ($("#id_roots").length) {
+		$.each($("label"), function (k, v){
+			$("label").addClass("spreadout col-sm-3");
+		    $("label").css("margin-right", '5px');
+		     $("label").css("font-family", 'Julius Sans One');
+		});
+		$('#id_name').css('float', 'right');
+		$('#id_roots').css('float', 'right');
+		$('#id_dob').css('float', 'right');
+		$('#id_face').css('float', 'right');
+		$('#id_body').css('float', 'right');
+		$('#id_bazooka').css('float', 'right');
+		$('#id_tushy').css('float', 'right');
+		$('#id_mugshot').css('float', 'right');
+		$('#id_status').css('float', 'right');
+		$('#id_details').css('float', 'right');
+		$('#id_mugshot').css('width', '250px');
+		$('#id_dob').css('width', '200px');
+	}
+	if ($("#id_athena").length) {
+		$.each($("label"), function (k, v){
+			$("label").addClass("spreadout col-sm-3");
+		    $("label").css("margin-right", '5px');
+		     $("label").css("font-family", 'Julius Sans One');
+		});
+		$('#id_athena').css('float', 'right');
+		$('#id_rank').css('float', 'right');
+		$('#id_rank').css('width', '100px');
+	}
+    
+    if ($('#id_cinema').length) {
+		$.each($("label"), function (k, v){
+			$("label").addClass("spreadout col-sm-2");
+		});
+		$("#id_cinema").addClass("spreadout col-sm-2");
+		// Select The Film in the option
+		var prevurl = document.referrer;
+		var valueid = prevurl.split('-')[prevurl.split('-').length-2];
+		$('#id_cinema').val(valueid);
+		if ($('#id_dimage').length) {
+			$('#id_dimage').addClass("spreadout col-sm-5");
+		}
+		if ($('#id_fimage').length) {
+			$('#id_fimage').addClass("spreadout col-sm-5");
+		}
+		if ($('#id_limage').length) {
+			$('#id_limage').addClass("spreadout col-sm-5");
+		}
+	}
+
+	if ($("#id_language").length) { // if it's a cinema create page
+		$.each($("label"), function (k, v){
+			$("label").addClass("spreadout col-sm-2");
+		});
+		$("#id_name").addClass("spreadout col-sm-8");
+		$("#id_category").addClass("spreadout col-sm-4");
+		$("#id_language").addClass("spreadout col-sm-4");
+		$("#id_year").addClass("spreadout col-sm-4");
+		$("#id_cinto").addClass("spreadout col-sm-8");
+		$("#id_dialogs").addClass("spreadout col-sm-8");
+		$("#id_popref").addClass("spreadout col-sm-8");
+		if ($("#id_metascore").length) {
+			$("#id_metascore").addClass("spreadout col-sm-4");
+			$("#id_meter").addClass("spreadout col-sm-4");
+			$("#id_cast").addClass("spreadout col-sm-8");
+			$("#id_director").addClass("spreadout col-sm-4");
+			$("#id_synopsis").addClass("spreadout col-sm-8");
+		}
+	}
+
+	if ($("#id_scenes").length) {
+		$.each($("label"), function (k, v){
+			$("label").addClass("spreadout col-sm-2");
+		});
+		$("#id_scenes").addClass("spreadout col-sm-6");
+		$("#id_lines").addClass("spreadout col-sm-6");
+	}
+
+	// scroll
+	$(document).scroll(function() {
+		if($(this).scrollTop() > 100) {
+	    	$('.navbar').css(
+	    		{background: '#ece8e4b8'});
+	    }
+	   	else {
+	    	$('.navbar').css(
+	    		{background: '#0000'});
+	    }
+	});
+	window.onunload = refreshParent;
+    function refreshParent() {
+        window.opener.location.reload();
+    }
+});
+</script>
+
+<!--	window.onload = function(){	
+			//do this before the page fully loads
+			setTimeout(function() {
+				var load = document.getElementById('hideAll');
+				load.style.display = 'none';
+  			}, 500);
+		};
+ -->

@@ -1,0 +1,46 @@
+<nav>
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#sitenav"  id="collbtn">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand logo" href='{% url "home"%}'><strong>চ</strong></a>
+    </div>
+    <div class="navbar-collapse collapse" id="sitenav">
+        <ul class="nav navbar-nav">
+          {% if request.user.is_authenticated %}
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <span class="caret"></span>Frauen</a>
+              <ul class="dropdown-menu">
+                <li><a href='{% url "athena:list"%}'>List</a></li>
+                <li><a href='{% url "athena:create"%}'>Create</a></li>
+                <li><a href='{% url "athena:rank"%}'>Rank</a></li>
+                <li><a href='{% url "athena:createrank"%}'>Create Rank</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <span class="caret"></span> Cinema</a>
+              <ul class="dropdown-menu">
+                <li><a href='{% url "cinema:list"%}'>Cinemas</a></li>
+                <li><a href='{% url "cinema:create"%}'>Add Cinema</a></li>
+                <li><a href='{% url "cinema:beginnings"%}'>Beginnings</a></li>
+                <li><a href='{% url "cinema:endings"%}'>Endings</a></li>
+                <li><a href='{% url "cinema:designshots"%}'>Designs</a></li>
+                <li><a href='{% url "cinema:foodshots"%}'>Foods</a></li>
+                <li><a href='{% url "cinema:locationshots"%}'>Locations</a></li>
+              </ul>
+            </li>
+            <li><a href='{% url "logout"%}'>Sign Out</a></li>
+            {% else %}
+              <li> <a href='{% url "login"%}'>Sign in</a></li>
+            {% endif %}
+            <li><a href='{% url "about"%}'>About</a></li>
+            <li><a href='{% url "contact"%}'>Contact</a></li>
+        </ul>
+    </div>
+  </div>
+</nav>
