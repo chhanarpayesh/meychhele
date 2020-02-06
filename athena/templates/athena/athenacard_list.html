@@ -1,0 +1,90 @@
+{%extends "base.html"%}
+{% block title %} List || {{block.super}}{% endblock %}
+
+{%block content%}
+<h2>Jungfrau</h2>
+<div class="sortbuttons">
+  <a class="btnage" href="/athena/list/sortbyage">Younger</a>
+  <a class="btnage" href="/athena/list/sortbyagerev">Older</a>
+  <a class="btnfeature" href="/athena/list/bazooka">Bazooka</a>
+  <a class="btnfeature" href="/athena/list/tushy">Tushy</a>
+  <a class="btnfeature" href="/athena/list/ll">Looks</a>
+  <a class="btnfeature" href="/athena/list/bb">Physique</a>
+  <a class="btnlocation" href="/athena/list/sa">South Asian</a>
+  <a class="btnlocation" href="/athena/list/wo">International</a>
+  <a class="btncarnal" href="/athena/list/f">Carnal</a>
+  <a class="btnknot" href="/athena/list/m">Knot</a>
+  </div>
+
+<div class="sortbuttons">
+  <a class="btnname" href="/athena/list/sortbyname">Name</a>
+  <a class="btnage" href="/athena/list/sortbydob">DOB</a>
+  <a class="btndate" href="/athena/list/sortbydate">Date</a>
+  <a class="btndate" href="/athena/list/sortbydaterev">Latest</a>
+  <a class="btnfail" href="/athena/list/nodob">No DoB</a>
+  <a class="btncarnal" href="/athena/list/angel">Angels</a>
+  <a class="btnknot" href="/athena/list/goddess">Goddesses</a>
+  <a class="btn-xs" href="/athena/list/all">All</a>
+</div>
+<div class="col-xs-12">
+  <p id="pagecountseries">
+    <span id="pagecount">{{object_list|length}} items
+    {% if not is_paginated %}</span></p>
+    {% else %}
+    shown(out of {{ page_obj.paginator.count }})</span>
+      <span id="pageseries">item #{{ page_obj.start_index }} to #{{ page_obj.end_index }}</span>
+  </p>
+  <div class="pagination">
+      <span class="step-links">
+          {% if page_obj.has_previous %}
+              <a href="?page={{ page_obj.previous_page_number }}">&lt;&lt;previous</a>
+          {% endif %}
+
+          <span class="current">
+              <strong>page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</strong>
+          </span>
+
+          {% if page_obj.has_next %}
+              <a href="?page={{ page_obj.next_page_number }}">next&gt;&gt;</a>
+          {% endif %}
+      </span>
+  </div>
+  {% endif %}
+</div>
+
+{% for obj in object_list %}
+  <div class="mihacard">
+    <div class="mihadetails">
+      <h3><a href='{{ obj.get_absolute_url}}'>{{obj}}</a></h3>
+      <div class="dob">{{obj.dob}}</div>
+      <div class="rating">
+          {%if obj.face%}{{obj.get_face_display}}{%endif%} {%if obj.body%}{{obj.get_body_display}}{%endif%} {%if obj.bazooka == True%}b{%endif%}{%if obj.tushy == True%}A{%endif%}
+      </div>
+    </div>
+    {% if obj.mugshot %}
+      <img src="{{ obj.mugshot.url }}">
+    {% endif %}
+  </div>
+{%endfor%}
+<br>
+  {% if is_paginated %}
+  <div class="pagination">
+      <span class="step-links">
+          {% if page_obj.has_previous %}
+              <a href="?page={{ page_obj.previous_page_number }}">&lt;&lt;previous</a>
+          {% endif %}
+
+          <span class="current">
+              <strong>page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</strong>
+          </span>
+
+          {% if page_obj.has_next %}
+              <a href="?page={{ page_obj.next_page_number }}">next&gt;&gt;</a>
+          {% endif %}
+      </span>
+  </div>
+  {% endif %}
+</div>
+
+
+{%endblock content%}

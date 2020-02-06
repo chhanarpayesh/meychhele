@@ -27,16 +27,4 @@ kombu==4.2.1
 msgpack==0.5.6
 Pillow==5.2.0
 PyHamcrest==1.9.0
-pypiwin32==223
 pytz==2018.5
-pywin32==224
-requests==2.19.1
-selenium==3.141.0
-six==1.11.0
-Twisted==18.9.0
-txaio==18.8.1
-unicodecsv==0.14.1
-urllib3==1.23
-vine==1.1.4
-webencodings==0.5.1
-zope.interface==4.6.0

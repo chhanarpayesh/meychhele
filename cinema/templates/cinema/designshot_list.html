@@ -1,0 +1,15 @@
+{%extends "base.html"%}
+{% block title %} Design Shots from Movies || {{block.super}}{% endblock %}
+
+{%block content%}
+<h2>Nocksha</h2>
+
+{%  for obj in object_list %}
+	<div class="cinecomp">
+		<!-- TODO LAZY LOAD -->
+		<img width='482px' src="{{ obj.dimage.url }}">
+	</div>
+{%endfor%}
+
+{%endblock content%}
+<br><hr><br>
